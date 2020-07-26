@@ -15198,3 +15198,45 @@ label monika_being_herself:
     m 5eka "With you, I can allow myself to be...{w=0.5}{nw}"
     extend 5eua "Well, {i}Just Me.{/i}"
     return
+    init 5 python:
+    addEvent(
+        Event(
+            persistent.event_ddatabase,
+            eventlabel="monika_period",
+            category=['you'],
+            prompt="Period",
+            ranndom=False,
+            pool=True,
+            rules={"no unlock"},
+            unlocked=True
+
+        )
+    )
+label monika_period:
+    m 1eud "You're on your period?"
+    m 1eud "I hope you're doing alright [player].{nw}"
+    $ _history_list.pop()
+    menu:
+        m "I hope you're doing alright [player].{fast}"
+        "Yes, it's fine":
+            m 1esa "I'm relieved to hear that, I'd hate to see you in pain."
+            m 3esa "But you should still take good care of yourself."
+            m 3esa "After all it's very hard time for your body so remember to not push yourself too hard."
+            m 4esc "I know that it can be tempting to do some more difficult tasks, but you really shoul take it easy."
+            m 5esu "After all I really love you and i want to to feel good."
+            m 5tsu "So promise me to take care of yourself, alright [player]?"
+        "No, I have cramps":
+            m 1ekd "Ooh, I'm sorry to hear that my dear."
+            m 3ekd "I know there's not much I can do for you, but I can at least try."
+            m 3esa "You can take a hot bath to help muscles relax. Some hot tea would be very helpful too."
+            m 3esa "Or just wrap yourself in blankets to make you feel warm."
+            m 3esc "I know you could not feel like it, but maybe go for a walk. Move around a little, it can really help. "
+            m 4esc "Just don't overdo yourself, simple walk should do the trick."
+            m 4esa "But if it becomes too much just lay down and don't push yoursels too hard"
+            m 1esa "After all you should take care of yourself, especially when you're in pain."
+            m 3esc "I know that some people would say that it's not that bad, mostly the ones who never experienced it."
+            m 3esd "But if you're feeling bad there's nothing wrong with taking it easier."
+            m 2esa "Just remember that I'm here for you whenever you need me [player]"
+            m 5esu "I know it's not that much, but I'm here for you. "
+            m 5tsu "Maybe knowing that I love you could help."
+            return
